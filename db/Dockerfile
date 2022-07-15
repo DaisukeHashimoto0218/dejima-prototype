@@ -1,15 +1,17 @@
-FROM mypg:11.2-alpine
+FROM postgres:11-stretch
 # FROM postgres:11.2-alpine
 # FROM postgres:11-alpine
 
-LABEL maintaner "miyake <miyake.kouta@ist.osaka-u.ac.jp>"
 
-RUN apk add --update --no-cache \
-    build-base \
-    bash \
+RUN apk add update -y \
+   && apt-get install -y \
+    sudo \
+    vim \
     curl \
     git \
+    gcc \
     make \
+    postgresql-server-dev-11 \
   && rm -rf /var/cache/apk/*
 
 RUN git clone https://github.com/petere/plsh \
