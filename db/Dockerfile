@@ -1,9 +1,7 @@
 FROM postgres:11-stretch
-# FROM postgres:11.2-alpine
-# FROM postgres:11-alpine
 
 
-RUN apk add update -y \
+RUN apt-get update -y \
    && apt-get install -y \
     sudo \
     vim \
@@ -12,7 +10,7 @@ RUN apk add update -y \
     gcc \
     make \
     postgresql-server-dev-11 \
-  && rm -rf /var/cache/apk/*
+  && rm -rf /var/cache/apt/*
 
 RUN git clone https://github.com/petere/plsh \
   && cd plsh && git checkout 9b108516a005a0592d9c9e145189825f92f820e1 \
